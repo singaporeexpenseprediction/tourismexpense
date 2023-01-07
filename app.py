@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import time
-import sklearn
 from xgboost import XGBRegressor
 
 #import matplotlib.pyplot as plt
@@ -68,8 +67,8 @@ if nav == "Popular Hotels":
         "Mandarin Orchard Singapore": "https://mandarin-orchard-hotel-singapore.hotel-ds.com/en/",
         "V Hotel Lavender": "https://vhotel.sg/v-hotel-lavender.shtml?gclid=Cj0KCQiA-oqdBhDfARIsAO0TrGFUXok4UotiIu20PVFFWrnHyPNJX7GX6HdX2g8Z93d-XyMmMrQmSUcaAnnDEALw_wcB&gclsrc=aw.ds",
         "York Hotel": "https://www.yorkhotel.com.sg/",
-        "Ibis Singapore on Bencoolen": "https://all.accor.com/hotel/6657/index.en.shtml",
-        "Marina Bay Sands Singapore": "https://www.visitsingapore.com/see-do-singapore/recreation-leisure/resorts/marina-bay-sands/",
+        "Ibis Singapore on Bencoolen": "https://www.holidify.com/hotels/ibis-hotels-in-SINGAPORE-8245.html",
+        "Marina Bay Sands Singapore": "https://www.holidify.com/hotel/a-1711.html",
         "The Elizabeth": "https://ar.trivago.com/en-145/oar/the-elizabeth-hotel-by-far-east-hospitality-singapore?tc=22&search=100-40920",
         "Royal Plaza": "https://www.royalplaza.com.sg/",
     }
@@ -224,8 +223,10 @@ if nav == "Prediction":
     elif month == 'September':
         month = 9
     elif month == 'October':
-        month = 11
+        month = 10
     elif month == 'November':
+        month = 11
+    elif month == 'December':
         month = 12
 
     value11 = st.number_input("How much will be your expected baggage weight in pounds?")
@@ -240,7 +241,7 @@ if nav == "Prediction":
     #value12 = value12.reshape(1, -1)
     p=pd.DataFrame([value11,value12])
 
-    #d = {'Weights_QTR': [value11], 'shopping_exp': [value12]}
+     #d = {'Weights_QTR': [value11], 'shopping_exp': [value12]}
     #df = pd.DataFrame(data=d)
     scale_data = np.array([value11, value12]).reshape(1, -1)
     scaled = scaler.transform(scale_data)
@@ -274,10 +275,10 @@ if nav == "Sightseeing Attractions":
 
     # Create a dictionary of hotel URLs
     places_urls = {
-        "Gardens by the Bay": "https://grant-associates.uk.com/projects/gardens-by-the-bay",
-        "Universal Studios Singapore": "https://www.pelago.co/en-SG/activity/pok40-rws-universal-studios-ticket-singapore/",
-        "Singapore Zoo": "https://www.kkday.com/en-sg/product/39249-wildlife-reserves-4-in-1-park-hopper-plus-ticket-singapore",
-        "Sentosa Island": "https://trevallog.com/sentosa-island-singapore/"
+        "Gardens by the Bay": "https://www.holidify.com/places/singapore/gardens-by-the-bay-sightseeing-11503.html",
+        "Universal Studios Singapore": "https://www.holidify.com/places/singapore/universal-studios-singapore-sightseeing-121008.html",
+        "Singapore Zoo": "https://www.holidify.com/places/singapore/the-singapore-zoo-sightseeing-11501.html",
+        "Sentosa Island": "https://www.holidify.com/places/singapore/sentosa-island-places-to-visit-area.html"
     }
 
     # Create a radio button for each hotel
