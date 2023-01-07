@@ -240,21 +240,16 @@ if nav == "Prediction":
     #value12 = value12.reshape(1, -1)
     p=pd.DataFrame([value11,value12])
 
-    d = {'Weights_QTR': [value11], 'shopping_exp': [value12]}
-    df = pd.DataFrame(data=d)
+    #d = {'Weights_QTR': [value11], 'shopping_exp': [value12]}
+    #df = pd.DataFrame(data=d)
+    scale_data = np.array([value11, value12]).reshape(1, -1)
+    scaled = scaler.transform(scale_data)
+    Weights_QTR = scaled[0][0]
+    shopping_exp = scaled[0][1]
 
-    #data = np.concatenate((value11, value12))
-    #p = scaler.fit_transform(data)
-    #scaled = [value11, value12]
-    #scaled1 = np.vectorize(np.int_)
-    #x = np.array(list(map(np.int_, np.array(scaled))))
-    #q = [float(x) for x in scaled]
-    #r = [np.array(q)]
-    r = scaler.fit_transform(df)
-    print(r)
 
     # Create a list of input values
-    inputs = [value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, month, r[0][0], r[0][1]]
+    inputs = [value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, month, Weights_QTR, shopping_exp]
     init_features = [float(x) for x in inputs]
     final_features = [np.array(init_features)]
     pred = model.predict(final_features)
