@@ -160,7 +160,7 @@ if nav == "Prediction":
     elif stay == "Own Residence":
         value7 = 4
     elif stay == "Service apartment":
-        value8 = 5
+        value7 = 5
     else:
         value7 = 6
 
